@@ -1,9 +1,15 @@
 package com.sovathana.app.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Article {
+	@JsonProperty("ID")
 	private int id;
+	@JsonProperty("TITLE")
 	private String title;
+	@JsonProperty("DESCRIPTION")
 	private String description;
+	@JsonProperty("IMAGE_URL")
 	private String imageUrl;
 	
 	public int getId() {

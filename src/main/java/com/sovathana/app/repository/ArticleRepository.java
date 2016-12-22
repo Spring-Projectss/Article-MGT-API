@@ -2,8 +2,11 @@ package com.sovathana.app.repository;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.DeleteProvider;
+import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.UpdateProvider;
 import org.springframework.stereotype.Repository;
 
 import com.sovathana.app.model.Article;
@@ -20,12 +23,12 @@ public interface ArticleRepository {
 	@SelectProvider(method = "findOne", type = ArticleSQLProvider.class)
 	public Article findOne(@Param("id") int id);
 	
-	@SelectProvider(method = "save", type = ArticleSQLProvider.class)
+	@InsertProvider(method = "save", type = ArticleSQLProvider.class)
 	public boolean save(@Param("art") Article article);
 	
-	@SelectProvider(method = "update", type = ArticleSQLProvider.class)
+	@UpdateProvider(method = "update", type = ArticleSQLProvider.class)
 	public boolean update(@Param("art") Article article);
 	
-	@SelectProvider(method = "remove", type = ArticleSQLProvider.class)
+	@DeleteProvider(method = "remove", type = ArticleSQLProvider.class)
 	public boolean remove(@Param("id") int id);
 }

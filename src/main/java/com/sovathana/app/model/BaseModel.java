@@ -1,8 +1,11 @@
 package com.sovathana.app.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class BaseModel {
-	
+	@JsonProperty("ID")
 	int id;
+	@JsonProperty("NAME")
 	String name;
 	
 	public int getId() {

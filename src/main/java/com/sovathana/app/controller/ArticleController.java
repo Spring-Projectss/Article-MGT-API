@@ -11,6 +11,7 @@ import com.sovathana.app.model.Article;
 import com.sovathana.app.service.ArticleService;
 import com.sovathana.app.util.api.ResponseCode;
 import com.sovathana.app.util.api.ResponseList;
+import com.sovathana.app.util.api.ResponseMessage;
 import com.sovathana.app.util.filter.ArticleFilter;
 import com.sovathana.app.util.pagination.Paging;
 
@@ -38,11 +39,13 @@ public class ArticleController {
 		ResponseList<Article> response = new ResponseList<>();
 		
 		ArrayList<Article> list = articleService.findAll(filter, paging);
-		// Set Message
-		if (list.isEmpty())
+		if (list.isEmpty()){
 			response.setCode(ResponseCode.RECORD_NOT_FOUND);
-		else
+			response.setMessage(ResponseMessage.RECORD_NOT_FOUND);
+		}else{
 			response.setCode(ResponseCode.RECORD_FOUND);
+			response.setMessage(ResponseMessage.RECORD_NOT_FOUND);
+		}
 		
 		// Set Data
 		response.setData(list);
